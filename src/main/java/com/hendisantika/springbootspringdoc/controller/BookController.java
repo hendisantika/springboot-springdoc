@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Collection;
+
 /**
  * Created by IntelliJ IDEA.
  * Project : springboot-springdoc
@@ -29,5 +31,10 @@ public class BookController {
     public Book findById(@PathVariable long id) {
         return repository.findById(id)
                 .orElseThrow(() -> new BookNotFoundException());
+    }
+
+    @GetMapping("/")
+    public Collection<Book> findBooks() {
+        return repository.getBooks();
     }
 }
