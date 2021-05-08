@@ -1,6 +1,7 @@
 package com.hendisantika.springbootspringdoc.repository;
 
 import com.hendisantika.springbootspringdoc.model.Book;
+import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -16,8 +17,9 @@ import java.util.Optional;
  * Date: 06/03/20
  * Time: 06.46
  */
+@Repository
 public class BookRepository {
-    private Map<Long, Book> books = new HashMap<>();
+    private final Map<Long, Book> books = new HashMap<>();
 
     public Optional<Book> findById(long id) {
         return Optional.ofNullable(books.get(id));
