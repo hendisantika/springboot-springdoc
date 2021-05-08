@@ -4,6 +4,7 @@ import com.hendisantika.springbootspringdoc.model.Person;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
@@ -26,6 +27,7 @@ public class IndexController {
     }
 
     @PostMapping(path = "person")
+    @ResponseBody
     public Person person(@Valid @RequestBody Person person) {
         return person;
     }
