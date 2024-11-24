@@ -3,7 +3,9 @@ package com.hendisantika.springbootspringdoc.controller;
 import com.hendisantika.springbootspringdoc.exception.BookNotFoundException;
 import com.hendisantika.springbootspringdoc.model.Book;
 import com.hendisantika.springbootspringdoc.repository.BookRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,8 +19,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
 import java.util.Collection;
 
 /**
@@ -32,10 +32,10 @@ import java.util.Collection;
  */
 @RestController
 @RequestMapping("/api/book")
+@RequiredArgsConstructor
 public class BookController {
 
-    @Autowired
-    private BookRepository repository;
+    private final BookRepository repository;
 
     @GetMapping("/{id}")
     public Book findById(@PathVariable long id) {
